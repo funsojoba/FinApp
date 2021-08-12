@@ -3,11 +3,7 @@ body {
 }
 .page-content {
 	width: 100%;
-	margin:  0 auto;
-	/* background-image: -moz-linear-gradient( 136deg, rgb(254,225,64) 0%, rgb(250,112,154) 100%);
-    background-image: -webkit-linear-gradient( 136deg, rgb(254,225,64) 0%, rgb(250,112,154) 100%);
-    background-image: -ms-linear-gradient( 136deg, rgb(254,225,64) 0%, rgb(250,112,154) 100%); */
-	background: #002B38;
+	margin:  0 auto;background: #002B38;
     display: flex;
 	display: -webkit-flex;
 	justify-content: center;
@@ -148,6 +144,10 @@ body {
 .form-v7-content .form-detail .input-text {
 	margin-bottom: 28px;
 }
+.form-v7-content .form-detail .invalid{
+	background: #ffdada;
+}
+
 .form-v7-content .form-detail input {
 	width: 100%;
     padding: 5px 15px 10px 15px;
@@ -255,3 +255,5 @@ body {
 	    margin-bottom: 50px;
 	}
 }
+
+
