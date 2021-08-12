@@ -1,0 +1,32 @@
+{% load static %} 
+{% include 'authentication/base_auth.html' %} 
+{% block content %}
+
+<div class="page-content">
+		<div class="form-v7-content">
+			<div class="form-left">
+				<img src=" {% static 'images/signin.png' %} " alt="form">
+				<p class="text-1">Sign in</p>
+			</div>
+			<form class="form-detail" action="#" method="post" id="myform">
+				<div class="form-row">
+					<label for="username">USERNAME</label>
+					<input type="text" name="username" id="username" class="input-text">
+				</div>
+				<div class="form-row">
+					<label for="your_email">E-MAIL</label>
+					<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+				</div>
+				<div class="form-row">
+					<label for="password">PASSWORD</label>
+					<input type="password" name="password" id="password" class="input-text" required>
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Log in">
+					<p>Or<a href=" {% url 'sign_up' %} ">Sign up</a></p>
+				</div>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}
