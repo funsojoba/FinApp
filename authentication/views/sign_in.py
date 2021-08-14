@@ -1,16 +1,35 @@
 import json
 
 from django.views import View
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-from django.contrib.messages import constants as messages
+from django.contrib import messages, auth
 
 from validate_email import validate_email
 
 
 class SignIn(View):
     def get(self, request):
+        return render(request, 'authentication/sign_in.html')
+
+    def post(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
+
+        if username and password:
+            user = auth.authenticate(username=username, password=password)
+            if user:
+                if user.is_active:
+                    messages.success(request, f'Welcome {user.username}')
+                    return redirect('index')
+                else:
+                    messages.error(
+                        request, 'Account is not active please check your mail')
+                    return render(request, 'authentication/sign_in.html')
+            messages.error(request, 'Invalid user credentials')
+            return render(request, 'authentication/sign_in.html')
+        messages.error(request, 'Please enter valid inputs')
         return render(request, 'authentication/sign_in.html')
 
 

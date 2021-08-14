@@ -3,23 +3,20 @@
 
 
 <div class="container">
-  <form method="post" action="{% url 'sign_up'%}">
+  <form method="post" action="{% url 'sign_in'%}">
     {% csrf_token %}
       
     {% include 'partials/_message.html' %}
     <p class="text-1">Sign In</p>
-
-      <div class="form-row">
-        <label for="your_email">E-MAIL</label>
-        <input
-          type="text"
-          name="your_email"
-          id="your_email"
+       <div class="form-row">
+        <label for="username">USERNAME</label>
+        <input 
+          type="text" 
+          name="username" 
+          id="username" 
           class="input-text"
-          required
-          pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
-        />
-        <label class="email-error" style="display:none;color:red"></label>
+          required />
+        <label class="username-error" style="display:none;color:red"></label>
       </div>
 
       <div class="form-row">
@@ -48,6 +45,6 @@
 </div>
 
 
-<script src=" {% static 'js/signup.js' %} "></script>
+{% comment %} <script src=" {% static 'js/signup.js' %} "></script> {% endcomment %}
 
 {% endblock %}
