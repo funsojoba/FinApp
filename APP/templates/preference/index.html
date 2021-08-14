@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<form class="row">
+<div class="input-group">
+  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+    <option selected>Choose...</option>
+    {% for currency in currencies  %}
+    <option value=" {{currency.key}}-{{currency.value}}  ">{{currency.key}}-{{currency.value}} </option>
+    
+    {% endfor %}
+  </select>
+  <button class="btn btn-secondary" type="button">Button</button>
+</div>
+</form>
+{% endblock  %}

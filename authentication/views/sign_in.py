@@ -4,6 +4,7 @@ from django.views import View
 from django.shortcuts import redirect, render
 from django.http import JsonResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import login
 from django.contrib import messages, auth
 
 from validate_email import validate_email
@@ -22,6 +23,7 @@ class SignIn(View):
             if user:
                 if user.is_active:
                     messages.success(request, f'Welcome {user.username}')
+                    login(request, user=user)
                     return redirect('index')
                 else:
                     messages.error(
