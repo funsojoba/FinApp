@@ -2,16 +2,20 @@
 {% load static %}
 
 {% block content %}
-<form class="row">
+<form class="row" method="post" action=" {% url 'user_preference' %} ">
+{% csrf_token %}
 <div class="input-group">
-  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-    <option selected>Choose...</option>
+  <select name="currency" class="form-select form-control" id="inputGroupSelect04" aria-label="Example select with button addon">
+    
+    {% if user_preference.currency %}
+    <option selected value="{{user_preference.currency}}">{{user_preference.currency}}</option>
+    {% endif %}
     {% for currency in currencies  %}
-    <option value=" {{currency.key}}-{{currency.value}}  ">{{currency.key}}-{{currency.value}} </option>
+    <option name="currency" value=" {{currency.key}}-{{currency.value}}">{{currency.key}}-{{currency.value}} </option>
     
     {% endfor %}
   </select>
-  <button class="btn btn-secondary" type="button">Button</button>
+ <input type="submit" value="add" class="btn btn-primary" />
 </div>
 </form>
 {% endblock  %}
