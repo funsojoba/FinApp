@@ -24,7 +24,7 @@
 
   {% comment %} <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> {% endcomment %}
 
-      <h2>Expenses</h2>
+      <h2>Income</h2>
       <div class="table-responsive">
 
       {% if expenses.count > 0 %}
@@ -32,7 +32,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>Amount</th>
+                <th>Amount <em>({{currency}})</em>  </th>
                 <th>Category</th>
                 <th>Date</th>
                 <th>Description</th>
@@ -81,7 +81,7 @@
         <table class="table table-hover" id="table-output" style="display:none">
             <thead>
               <tr>
-                <th>Amount</th>
+                <th>Amount <em>({{currency}})</em></th>
                 <th>Category</th>
                 <th>Date</th>
                 <th>Description</th>

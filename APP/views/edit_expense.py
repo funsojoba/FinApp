@@ -26,7 +26,7 @@ def edit_expense(request, pk):
 
         if not amount or not description:
             messages.error(request, 'Both amount and description are required')
-            return render(request, 'edit_expense.html', context)
+            return render(request, 'expense/edit_expense.html', context)
 
         expense.amount = amount
         expense.category = category
@@ -35,6 +35,6 @@ def edit_expense(request, pk):
         expense.owner = owner
         expense.save()
         messages.success(request, 'Expense updated successfully')
-        return redirect('index')
+        return redirect('expense/index')
 
-    return render(request, 'edit_expense.html', context)
+    return render(request, 'expense/edit_expense.html', context)

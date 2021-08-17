@@ -23,14 +23,14 @@ def add_expense(request):
 
         if not amount:
             messages.error(request, 'Amount is required')
-            return render(request, 'add_expense.html', context)
+            return render(request, 'expense/add_expense.html', context)
         
         if not description:
             messages.error(request, 'Description is required')
-            return render(request, 'add_expense.html', context)
+            return render(request, 'expense/add_expense.html', context)
 
         expense = Expense.objects.create(owner=owner, amount=amount, category=category, description=description, expense_date=expense_date )
         expense.save()
         messages.success(request, 'Expense added successfully')
         return redirect('index')
-    return render(request, 'add_expense.html', context)
+    return render(request, 'expense/add_expense.html', context)
