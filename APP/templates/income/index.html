@@ -17,7 +17,7 @@
     </div>
 
     <div class="col-2">
-      <a href=" {% url 'add_expense' %} " class="btn btn-success">Add Expense</a>
+      <a href=" {% url 'add_income' %} " class="btn btn-success">Add Income</a>
     </di>
   </div>
 </div>
@@ -27,7 +27,7 @@
       <h2>Income</h2>
       <div class="table-responsive">
 
-      {% if expenses.count > 0 %}
+      {% if incomes.count > 0 %}
         <div id="app-table">
           <table class="table table-hover">
             <thead>
@@ -41,15 +41,15 @@
             </thead>
             <tbody>
 
-            {% for expense in page_obj %}
+            {% for income in page_obj %}
             
               <tr>
-                <td>{{expense.amount}}</td>
-                <td> {{expense.category}} </td>
-                <td> {{expense.expense_date}} </td>
-                <td> {{expense.description}} </td>
+                <td>{{income.amount}}</td>
+                <td> {{income.source}} </td>
+                <td> {{income.income_date}} </td>
+                <td> {{income.description}} </td>
                 <td> 
-                  <a href="{% url 'edit_expense' expense.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i> Edit</a> 
+                   <a href="{% url 'edit_income' income.id %}" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i> Edit</a> 
                 </td>
               </tr>
             {% endfor %}
@@ -93,7 +93,8 @@
         </table>
         </div>
 
-        
+        {% else %}
+        <div>No incomes yet</div>
       {% endif %}
 
       </div>

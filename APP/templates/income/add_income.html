@@ -1,0 +1,63 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+
+
+<div class="container">
+
+  <div class="row">
+    <nav class="col-12" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=" {% url 'index' %} ">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Income</li>
+      </ol>
+    </nav>
+  </div>
+  
+  <form method="post" action="{% url 'add_income' %}">
+  {% csrf_token %}
+    <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="amount" 
+          name="amount"
+          >
+    </div>
+    <div class="mb-3">
+        <label for="amount" class="form-label">Source</label>
+        <select name="source" class="form-select form-control" aria-label="Default select example">
+            {% for source in sources %}
+                <option value="{{source}}">{{source}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3 form-group">
+        <label class="form-label" for="income_date">Income Date</label>
+        <input 
+          type="date" 
+          class="form-control" 
+          id="income_date" 
+          name="income_date"
+          required>
+    </div>
+    <div class="form-floating mb-3">
+        <label for="description">Description</label>
+        <textarea 
+            name="description" 
+            class="form-control" 
+            placeholder="income description" 
+            id="description" 
+            style="height: 100px"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+  
+
+{% endblock %}

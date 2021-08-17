@@ -1,0 +1,76 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+
+
+<div class="container">
+
+<div class="container">
+  <div class="row">
+    <nav class="col-10" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=" {% url 'income' %} ">Income</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Income</li>
+      </ol>
+    </nav>
+
+    <div class="col-2">
+
+       <a href=" {% url 'delete_income' income.id %} " class="btn btn-danger"> <i class="fas fa-trash"></i> Delete</a> 
+    </di>
+    </div>
+  </div>
+
+  <form method="post" action="{% url 'edit_income' income.id %}">
+  {% csrf_token %}
+    <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="amount" 
+          name="amount"
+          value="{{income.amount}}"
+          >
+    </div>
+    <div class="mb-3">
+        <label for="amount" class="form-label">Source</label>
+        <select name="category" class="form-select form-control" aria-label="Default select example">
+              <option selected value="{{income.source}}">{{income.source}}</option>
+            {% for source in sources %}
+                <option value="{{source}}">{{source}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3 form-group">
+        <label class="form-label" for="expense_date">Expense Date</label>
+        <input 
+          type="date" 
+          class="form-control" 
+          id="income_date" 
+          name="income_date"
+          required
+          value="{{income.income_date | date:'Y-m-d'}}"
+          >
+    </div>
+    <div class="form-floating mb-3">
+        <label for="description">Description</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="description" 
+          name="description"
+          value="{{income.description}}"
+          >
+        
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+</div>
+
+  
+
+{% endblock %}

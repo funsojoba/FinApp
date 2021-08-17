@@ -35,6 +35,6 @@ def edit_expense(request, pk):
         expense.owner = owner
         expense.save()
         messages.success(request, 'Expense updated successfully')
-        return redirect('expense/index')
+        return redirect('index')
 
     return render(request, 'expense/edit_expense.html', context)
